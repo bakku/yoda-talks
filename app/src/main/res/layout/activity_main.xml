@@ -31,5 +31,6 @@
         android:text="@string/button_label"
         android:id="@+id/translateButton"
         android:layout_gravity="bottom|center_horizontal"
-        android:layout_marginTop="32dp" />
+        android:layout_marginTop="32dp"
+        android:onClick="translate" />
 </LinearLayout>
