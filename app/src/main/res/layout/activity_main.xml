@@ -1,45 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
-    android:id="@+id/baseLayout"
-    tools:context="org.bakku.yodatalks.MainActivity">
+    android:layout_width="match_parent">
 
-    <TextView
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:orientation="vertical"
+        android:id="@+id/baseLayout"
+        tools:context="org.bakku.yodatalks.MainActivity">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_area_label"
+            android:id="@+id/textAreaLabel" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="32dp"
+            android:maxLines="3"
+            android:scrollbars="vertical" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/resultText"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="32dp"
+            android:visibility="gone" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_label"
+            android:id="@+id/translateButton"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginTop="32dp"
+            android:onClick="translate" />
+    </LinearLayout>
+
+    <ProgressBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/text_area_label"
-        android:id="@+id/textAreaLabel" />
-
-    <EditText
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="32dp"
-        android:maxLines="3"
-        android:scrollbars="vertical" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/resultText"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="32dp"
+        android:id="@+id/progressBar"
+        android:layout_marginBottom="30dp"
+        android:layout_gravity="center_horizontal|bottom"
         android:visibility="gone" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/button_label"
-        android:id="@+id/translateButton"
-        android:layout_gravity="bottom|center_horizontal"
-        android:layout_marginTop="32dp"
-        android:onClick="translate" />
-</LinearLayout>
+</FrameLayout>

@@ -20,12 +20,12 @@ import java.net.URLEncoder;
 public class YodaTranslateRequest extends AsyncTask<String, Void, String> {
 
     private static String YODA_URL = "https://yoda.p.mashape.com/yoda?sentence=";
-    private Context context;
+    private static String API_KEY = "AmMQsOsdhImshGQIpVG1YdjpsjQNp1AX4cBjsnn3mITt00gVe9";
+
     private TextView resultTextView;
     private DownloadListener downloadListener;
 
-    public YodaTranslateRequest(Context context, TextView resultTextView, DownloadListener downloadListener) {
-        this.context = context;
+    public YodaTranslateRequest(TextView resultTextView, DownloadListener downloadListener) {
         this.resultTextView = resultTextView;
         this.downloadListener = downloadListener;
     }
@@ -37,12 +37,11 @@ public class YodaTranslateRequest extends AsyncTask<String, Void, String> {
         try {
             String encodedParams = URLEncoder.encode(params[0], "UTF-8");
             response = new Request(YODA_URL + encodedParams)
-                    .header("X-Mashape-Key", "AmMQsOsdhImshGQIpVG1YdjpsjQNp1AX4cBjsnn3mITt00gVe9")
+                    .header("X-Mashape-Key", API_KEY)
                     .header("Accept", "text/plain")
                     .execute();
         }
         catch (Exception e) {
-            Log.d("TAG", "Exception caught");
             cancel(true);
         }
 
