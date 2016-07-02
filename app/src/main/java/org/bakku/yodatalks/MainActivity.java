@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import org.bakku.yodatalks.network.YodaTranslateRequest;
+
 public class MainActivity extends AppCompatActivity {
 
     private EditText editText;
@@ -19,6 +21,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void translate(View view) {
-        Log.d("TAG", editText.getText().toString());
+        new YodaTranslateRequest(this).execute(this.editText.getText().toString());
     }
 }
