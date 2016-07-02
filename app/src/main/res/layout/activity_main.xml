@@ -15,11 +15,12 @@
         android:id="@+id/baseLayout"
         tools:context="org.bakku.yodatalks.MainActivity">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/text_area_label"
-            android:id="@+id/textAreaLabel" />
+        <ImageView
+            android:layout_width="112dp"
+            android:layout_height="112dp"
+            android:id="@+id/imageView"
+            android:layout_gravity="center_horizontal"
+            android:src="@mipmap/ic_launcher" />
 
         <EditText
             android:layout_width="fill_parent"
@@ -28,7 +29,10 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="32dp"
             android:maxLines="3"
-            android:scrollbars="vertical" />
+            android:scrollbars="vertical"
+            android:inputType="text"
+            android:imeOptions="actionGo"
+            android:hint="@string/edit_text_hint"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -46,6 +50,7 @@
             android:layout_gravity="bottom|center_horizontal"
             android:layout_marginTop="32dp"
             android:onClick="translate" />
+
     </LinearLayout>
 
     <ProgressBar

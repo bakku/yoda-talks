@@ -1,17 +1,9 @@
 package org.bakku.yodatalks.network;
 
-import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
-import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import org.bakku.yodatalks.network.request.Request;
-import org.bakku.yodatalks.network.request.RequestException;
 
-import java.io.FileNotFoundException;
-import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 /**
@@ -22,11 +14,9 @@ public class YodaTranslateRequest extends AsyncTask<String, Void, String> {
     private static String YODA_URL = "https://yoda.p.mashape.com/yoda?sentence=";
     private static String API_KEY = "AmMQsOsdhImshGQIpVG1YdjpsjQNp1AX4cBjsnn3mITt00gVe9";
 
-    private TextView resultTextView;
-    private DownloadListener downloadListener;
+    private YodaDownloadListener downloadListener;
 
-    public YodaTranslateRequest(TextView resultTextView, DownloadListener downloadListener) {
-        this.resultTextView = resultTextView;
+    public YodaTranslateRequest(YodaDownloadListener downloadListener) {
         this.downloadListener = downloadListener;
     }
 
@@ -59,8 +49,6 @@ public class YodaTranslateRequest extends AsyncTask<String, Void, String> {
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
 
-        resultTextView.setText(s);
-        resultTextView.setVisibility(View.VISIBLE);
-        downloadListener.onSuccess();
+        downloadListener.onSuccess(s);
     }
 }
