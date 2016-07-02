@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">YodaTalks</string>
+    <string name="text_area_label">Translate Text to Yodaish</string>
+    <string name="button_label">Translate</string>
 </resources>
