@@ -2,4 +2,7 @@
     <string name="app_name">YodaTalks</string>
     <string name="text_area_label">Translate Text to Yodaish</string>
     <string name="button_label">Translate</string>
+    <string name="button_loading">Loading...</string>
+    <string name="error_snackbar">Error during Request</string>
+    <string name="retry_snackbar">RETRY</string>
 </resources>

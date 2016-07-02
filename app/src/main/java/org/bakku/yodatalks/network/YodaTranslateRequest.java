@@ -2,11 +2,15 @@ package org.bakku.yodatalks.network;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.bakku.yodatalks.network.request.Request;
 import org.bakku.yodatalks.network.request.RequestException;
 
+import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
@@ -17,9 +21,13 @@ public class YodaTranslateRequest extends AsyncTask<String, Void, String> {
 
     private static String YODA_URL = "https://yoda.p.mashape.com/yoda?sentence=";
     private Context context;
+    private TextView resultTextView;
+    private DownloadListener downloadListener;
 
-    public YodaTranslateRequest(Context context) {
+    public YodaTranslateRequest(Context context, TextView resultTextView, DownloadListener downloadListener) {
         this.context = context;
+        this.resultTextView = resultTextView;
+        this.downloadListener = downloadListener;
     }
 
     @Override
@@ -33,20 +41,27 @@ public class YodaTranslateRequest extends AsyncTask<String, Void, String> {
                     .header("Accept", "text/plain")
                     .execute();
         }
-        catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        catch (RequestException e) {
-            e.printStackTrace();
+        catch (Exception e) {
+            Log.d("TAG", "Exception caught");
+            cancel(true);
         }
 
         return response;
     }
 
     @Override
+    protected void onCancelled() {
+        super.onCancelled();
+
+        downloadListener.onError();
+    }
+
+    @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
 
-        Toast.makeText(this.context, s, Toast.LENGTH_LONG).show();
+        resultTextView.setText(s);
+        resultTextView.setVisibility(View.VISIBLE);
+        downloadListener.onSuccess();
     }
 }
